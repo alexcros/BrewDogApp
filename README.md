@@ -3,7 +3,7 @@
 BrewDogApp is a beer recomendation iOS-client powered by RxSwift and RxCocoa with:
 
   - MVP Clean architecture
-  - Assembly + DI
+  - [Assembly + DI](https://github.com/LosZigerianos/JourTrip/blob/master/Documentation/Architecture.md)
   - Unit Tests
   - Swift 5
   - Realm database
@@ -36,9 +36,11 @@ $ open BrewDogApp.xcworkspace
 
 ## Exercise things done!
 
-1 - Rest api rx connection
-2 - Sorting beers by abv and with all the information: beerName, image, etc
-3 - Search results online done. Checking first on disk and then in the webService  
+- Rest api rx connection
+
+- Sorting beers by abv and with all the information: beerName, image, etc
+
+- Search results online done. Checking first on disk and then in the webService  
 
 ## To do
 
