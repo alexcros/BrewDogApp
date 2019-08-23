@@ -8,14 +8,28 @@
 
 import Foundation
 
-struct Beer: Codable {
+struct Beer {
+    
     let identifier: Int16
     let name: String
     let tagline: String?
     let description: String?
     let imageUrl: String?
-    let abv: Double
+    let abv: Float
     
+    init(identifier: Int16, name: String, tagline: String? = nil, description: String? = nil, imageUrl: String? = nil, abv: Float) {
+        self.identifier = identifier
+        self.name = name
+        self.tagline = tagline
+        self.description = description
+        self.imageUrl = imageUrl
+        self.abv = abv
+    }
+
+}
+// MARK: - Decodable
+
+extension Beer: Decodable {
     private enum CodingKeys: String, CodingKey {
         case identifier = "id"
         case name
@@ -24,25 +38,6 @@ struct Beer: Codable {
         case imageUrl = "image_url"
         case abv
     }
-    
-    init(identifier: Int16, name: String, tagline: String, description: String, imageUrl: String, abv: Double) {
-        self.identifier = identifier
-        self.name = name
-        self.tagline = tagline
-        self.description = description
-        self.imageUrl = imageUrl
-        self.abv = abv
-    }
-    
-    init(identifier: Int16, name: String) {
-        self.init(identifier: identifier,
-                  name: name,
-                  tagline: "tag",
-                  description: "desc",
-                  imageUrl: "",
-                  abv: 5.0)
-    }
-
 }
 
 // MARK: - Proxy

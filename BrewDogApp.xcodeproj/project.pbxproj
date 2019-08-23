@@ -44,6 +44,8 @@
 		ACE5424E22FB37ED00D0F5D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5424D22FB37ED00D0F5D9 /* AppDelegate.swift */; };
 		ACE5425522FB37EF00D0F5D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE5425422FB37EF00D0F5D9 /* Assets.xcassets */; };
 		ACE5425822FB37EF00D0F5D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE5425622FB37EF00D0F5D9 /* LaunchScreen.storyboard */; };
+		ACE97DE2230F68E600F5DD31 /* beer-response.json in Resources */ = {isa = PBXBuildFile; fileRef = ACE97DE1230F68E600F5DD31 /* beer-response.json */; };
+		ACE97DE5230F6F7100F5DD31 /* DateFormatter+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE97DE4230F6F7100F5DD31 /* DateFormatter+Custom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		ACE5425922FB37EF00D0F5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACE5425E22FB37EF00D0F5D9 /* BrewDogAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewDogAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE5426422FB37EF00D0F5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACE97DE1230F68E600F5DD31 /* beer-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "beer-response.json"; sourceTree = "<group>"; };
+		ACE97DE4230F6F7100F5DD31 /* DateFormatter+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Custom.swift"; sourceTree = "<group>"; };
 		C6A3637EB4702C02124E8F41 /* Pods-BrewDogApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewDogApp.release.xcconfig"; path = "Target Support Files/Pods-BrewDogApp/Pods-BrewDogApp.release.xcconfig"; sourceTree = "<group>"; };
 		F46A3F0669ABBEDF74812D99 /* Pods-BrewDogAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrewDogAppTests.release.xcconfig"; path = "Target Support Files/Pods-BrewDogAppTests/Pods-BrewDogAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +259,7 @@
 		AC64D65C23032A70003DA366 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ACE97DE1230F68E600F5DD31 /* beer-response.json */,
 				ACE5425422FB37EF00D0F5D9 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -302,16 +307,17 @@
 		ACE5424C22FB37ED00D0F5D9 /* BrewDogApp */ = {
 			isa = PBXGroup;
 			children = (
+				ACE5424D22FB37ED00D0F5D9 /* AppDelegate.swift */,
+				AC8F2CFF22FB39CA00450DF1 /* AppAssembly.swift */,
 				AC0F5A0222FB4809001982B7 /* Domain */,
 				AC8F2D0122FB39F100450DF1 /* DI */,
+				ACE97DE3230F6F4E00F5DD31 /* Extensions */,
 				AC0F59EE22FB3EB0001982B7 /* Initial */,
 				AC0F5A0E22FB855A001982B7 /* Search */,
 				AC8F2D0422FB3A4700450DF1 /* Web Service */,
 				AC64D65C23032A70003DA366 /* Resources */,
 				AC0F5A1C22FB875E001982B7 /* Utils */,
 				ACE5425922FB37EF00D0F5D9 /* Info.plist */,
-				ACE5424D22FB37ED00D0F5D9 /* AppDelegate.swift */,
-				AC8F2CFF22FB39CA00450DF1 /* AppAssembly.swift */,
 			);
 			path = BrewDogApp;
 			sourceTree = "<group>";
@@ -324,6 +330,14 @@
 				AC29C205230A128D00C27CDF /* RepositoryTests.swift */,
 			);
 			path = BrewDogAppTests;
+			sourceTree = "<group>";
+		};
+		ACE97DE3230F6F4E00F5DD31 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACE97DE4230F6F7100F5DD31 /* DateFormatter+Custom.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FB3106141D32F883E597DF81 /* Frameworks */ = {
@@ -423,6 +437,7 @@
 				ACE5425822FB37EF00D0F5D9 /* LaunchScreen.storyboard in Resources */,
 				ACE5425522FB37EF00D0F5D9 /* Assets.xcassets in Resources */,
 				AC0F5A3922FC0054001982B7 /* SearchResultCell.xib in Resources */,
+				ACE97DE2230F68E600F5DD31 /* beer-response.json in Resources */,
 				AC0F5A2422FB8C2B001982B7 /* CardView.xib in Resources */,
 				AC0F5A3F22FC08E8001982B7 /* InitialViewController.xib in Resources */,
 			);
@@ -532,6 +547,7 @@
 				AC0F59F922FB412D001982B7 /* InitialViewController.swift in Sources */,
 				AC29C209230A134F00C27CDF /* Repository.swift in Sources */,
 				AC0F59ED22FB3D91001982B7 /* ApiEndpoint.swift in Sources */,
+				ACE97DE5230F6F7100F5DD31 /* DateFormatter+Custom.swift in Sources */,
 				AC64D64A2301A183003DA366 /* InitialService.swift in Sources */,
 				AC0F5A1222FB8585001982B7 /* SearchAssembly.swift in Sources */,
 				AC8F2D0022FB39CA00450DF1 /* AppAssembly.swift in Sources */,

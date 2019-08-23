@@ -11,8 +11,8 @@ import XCTest
 
 class BeerTests: XCTestCase {
     
-    var beerArray: [Beer] = []
-    var beerUnsortedArray: [Beer] = []
+    var emptyCollection: [Beer] = []
+    var beerSortedCollection: [Beer] = []
     
     var beerOne: Beer!
     var beerTwo: Beer!
@@ -22,50 +22,57 @@ class BeerTests: XCTestCase {
     
     override func setUp() {
         
-        beerOne = Beer(identifier: 12,
-                       name: "Arcade Nation",
-                       tagline: "Seasonal Black IPA.",
-                       description: "Running",
-                       imageUrl: "",
-                       abv: 5.3)
+        guard let path = Bundle.main.path(forResource: "beer-response", ofType: "json") else {
+            XCTFail("beer-response isn't found")
+            return
+        }
         
-        beerTwo = Beer(identifier: 1,
-                       name: "Hobo Pop",
-                       tagline: "2013 Prototype Rye Pale Ale.",
-                       description: "Brewed",
-                       imageUrl: "",
-                       abv: 4.2)
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            let decoder = JSONDecoder()
+            beerSortedCollection = try decoder.decode([Beer].self, from: data)
+        } catch {
+            XCTFail("Error decoding data")
+        }
         
-        beerThree = Beer(identifier: 2, name: "Kohatu")
-        beerFour = Beer(identifier: 3, name: "Cranachan Cream Ale")
-        beerFive = Beer(identifier: 4, name: "Dortmunder")
-        
-        beerUnsortedArray.append(beerTwo)
-        beerUnsortedArray.append(beerOne)
-        beerUnsortedArray.append(beerThree)
-        beerUnsortedArray.append(beerFour)
-        beerUnsortedArray.append(beerFive)
+        beerOne = beerSortedCollection.first
+        beerTwo = beerSortedCollection[1]
+        beerThree = beerSortedCollection[2]
+        beerFour = beerSortedCollection[3]
+        beerFive = beerSortedCollection[4]
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testDecodeBeerArray() {
+        
+        XCTAssertNotNil(beerSortedCollection)
+        
+        for beer in beerSortedCollection {
+            XCTAssertNotNil(beer.abv)
+            XCTAssertNotNil(beer.description)
+            XCTAssertNotNil(beer.hashValue)
+            XCTAssertNotNil(beer.identifier)
+            XCTAssertNotNil(beer.imageUrl ?? "")
+            XCTAssertNotNil(beer.name)
+            XCTAssertNotNil(beer.tagline)
+        }
+    }
+    
     func testBeerName() {
-        XCTAssertEqual(beerFive.name, "Dortmunder")
-        XCTAssertEqual(beerFour.name, "Cranachan Cream Ale")
+        XCTAssertEqual(beerFive.name, "Avery Brown Dredge")
+        XCTAssertEqual(beerFour.name, "Pilsen Lager")
     }
     
     func testBeer_addBeers_returnsTheCorrectCountOfBeers() {
-        XCTAssertEqual(beerArray.count, 0)
+        XCTAssertEqual(emptyCollection.count, 0)
+
+        emptyCollection.append(beerThree)
+        emptyCollection.append(beerTwo)
         
-        beerArray.append(beerTwo)
-        beerArray.append(beerThree)
-        XCTAssertEqual(beerArray.count, 2)
-        
-        beerArray.append(beerFour)
-        beerArray.append(beerFive)
-        XCTAssertEqual(beerArray.count, 4)
+        XCTAssertEqual(emptyCollection.count, 2)
     }
     
     func testBeerExistence() {
@@ -75,12 +82,7 @@ class BeerTests: XCTestCase {
     func testBeerEquality() {
         XCTAssertEqual(beerOne, beerOne)
         
-        let beerEquality = Beer(identifier: 12,
-                                name: "Arcade Nation",
-                                tagline: "Seasonal Black IPA.",
-                                description: "Running ",
-                                imageUrl: "",
-                                abv: 5.3)
+        let beerEquality = Repository.local.beers.last
         
         XCTAssertEqual(beerOne, beerEquality)
         
@@ -97,8 +99,9 @@ class BeerTests: XCTestCase {
     }
     
     func testBeer_sorted_ReturnsSortedArray() {
-        XCTAssertEqual(beerArray, beerArray.sorted())
+        XCTAssertEqual(emptyCollection, emptyCollection.sorted())
         
-        XCTAssertNotEqual(beerArray, beerUnsortedArray)
+        XCTAssertNotEqual(emptyCollection, beerSortedCollection)
     }
+    
 }

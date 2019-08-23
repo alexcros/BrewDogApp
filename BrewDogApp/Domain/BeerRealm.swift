@@ -16,7 +16,7 @@ final class BeerRealm: Object {
     @objc dynamic var query: String = ""
     @objc dynamic var beerDescription: String?
     @objc dynamic var imageUrl: String?
-    var abv = RealmOptional<Double>()
+    var abv = RealmOptional<Float>()
     
     override static func primaryKey() -> String? {
         return "name"

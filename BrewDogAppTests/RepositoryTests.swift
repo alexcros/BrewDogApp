@@ -31,7 +31,7 @@ class RepositoryTests: XCTestCase {
         
         XCTAssertNotNil(localBeers)
         
-        XCTAssertEqual(localBeers.count, 3)
+        XCTAssertEqual(localBeers.count, 4)
     }
     
     func testLocalRepository_ReturnsSortedArrayOfBeers() {
