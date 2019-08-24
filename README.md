@@ -10,7 +10,7 @@ BrewDogApp is a beer recomendation iOS-client powered by RxSwift and RxCocoa wit
   
 ## Architecture: Model View Presenter
   
-  ![MVP Clean architecture](architecture-image.PNG)
+  ![MVP Clean architecture](https://github.com/alexcros/BrewDogApp/blob/master/architecture-image.png)
   
 ### MVP + Assembly + DI
 
